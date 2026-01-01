@@ -85,16 +85,16 @@ process_folder() {
     return
   fi
 
-  # if [ "$DRY_RUN" -eq 1 ]; then
-  #   echo "Dry-run: would process '$FOLDER'"
-  #   echo "  Would create:"
-  #   echo "    $NOLOAD_PATH"
-  #   echo "    $M3U_PATH"
-  #   echo "  Would write the following entries to $M3U_PATH:"
-  #   echo "$FILES" | sed "s|^$PARENT_DIR/||"
-  #   PROCESSED=$((PROCESSED+1))
-  #   return
-  # fi
+  if [ "$DRY_RUN" -eq 1 ]; then
+    echo "Found folder: '$FOLDER'"
+    # echo "  Would create:"
+    echo "    $NOLOAD_PATH"
+    echo "    $M3U_PATH"
+    # echo "  Would write the following entries to $M3U_PATH:"
+    # echo "$FILES" | sed "s|^$PARENT_DIR/||"
+    PROCESSED=$((PROCESSED+1))
+    return
+  fi
 
   # Create empty noload.txt inside the folder
   : > "$NOLOAD_PATH"
